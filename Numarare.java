@@ -17,7 +17,10 @@ public class Numarare {
 		MyScanner input = new MyScanner(new FileReader("numarare.in"));
 
 		// Read input
+
+		// nunmber of nodes
 		int N = input.nextInt();
+		// number of edges
 		int M = input.nextInt();
 
 		ArrayList<Integer>[] graph1 = new ArrayList[N + 1];
