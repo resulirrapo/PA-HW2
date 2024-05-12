@@ -21,9 +21,9 @@ public class Drumuri {
 	}
 
 	private void readInput() throws IOException {
-		MyScanner sc = new MyScanner(new FileReader("drumuri.in"));
-		n = sc.nextInt();
-		m = sc.nextInt();
+		MyScanner input = new MyScanner(new FileReader("drumuri.in"));
+		n = input.nextInt();
+		m = input.nextInt();
 		adj = new ArrayList[n + 1];
 
 		for (int i = 1; i <= n; i++) {
@@ -31,31 +31,30 @@ public class Drumuri {
 		}
 
 		for (int i = 0; i < m; i++) {
-			int from = sc.nextInt(), to = sc.nextInt(), cost = sc.nextInt();
+			int from = input.nextInt(), to = input.nextInt(), cost = input.nextInt();
 			adj[to].add(new int[]{from, cost}); // Reverse the edge
 		}
 
-		x = sc.nextInt();
-		y = sc.nextInt();
-		z = sc.nextInt();
-		sc.close();
+		x = input.nextInt();
+		y = input.nextInt();
+		z = input.nextInt();
 	}
 
 	private void writeOutput() throws IOException {
-		PrintWriter pw = new PrintWriter(new FileWriter("drumuri.out"));
+		PrintWriter output = new PrintWriter(new FileWriter("drumuri.out"));
 		long[] costToZ = dijkstra(z);
 
 		long distXtoZ = costToZ[x];
 		long distYtoZ = costToZ[y];
 
 		if (distXtoZ == INF || distYtoZ == INF) {
-			pw.println("-1");
+			output.println("-1");
 		} else {
 			// Adjust calculation to better manage potential path overlaps
 			long result = distXtoZ + distYtoZ;
-			pw.println(result);
+			output.println(result);
 		}
-		pw.close();
+		output.close();
 	}
 
 	private long[] dijkstra(int start) {
