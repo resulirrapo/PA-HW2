@@ -18,14 +18,18 @@ public class Drumuri {
 	private void solve() throws IOException {
 		readInput();
 		writeOutput();
-	}
+	}	
 
+	// Read the input
 	private void readInput() throws IOException {
-		MyScanner input = new MyScanner(new FileReader("drumuri.in"));
+		MyScanner3 input = new MyScanner3(new FileReader("drumuri.in"));
+
+		// read input
 		n = input.nextInt();
 		m = input.nextInt();
 		adj = new ArrayList[n + 1];
 
+		// initialize adjacency list
 		for (int i = 1; i <= n; i++) {
 			adj[i] = new ArrayList<>();
 		}
@@ -40,6 +44,7 @@ public class Drumuri {
 		z = input.nextInt();
 	}
 
+	// Write the output
 	private void writeOutput() throws IOException {
 		PrintWriter output = new PrintWriter(new FileWriter("drumuri.out"));
 		long[] costToZ = dijkstra(z);
@@ -57,13 +62,16 @@ public class Drumuri {
 		output.close();
 	}
 
+	// Use dijkstra to find the shortest path from start to all other nodes
 	private long[] dijkstra(int start) {
+		// initialize distances
 		long[] dist = new long[n + 1];
 		Arrays.fill(dist, INF);
 		dist[start] = 0;
 		PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingLong(a -> a[1]));
 		pq.add(new int[]{start, 0});
 
+		// dijkstra's algorithm
 		while (!pq.isEmpty()) {
 			int[] current = pq.poll();
 			int node = current[0];
@@ -73,6 +81,7 @@ public class Drumuri {
 				continue;
 			}
 
+			// relax edges
 			for (int[] edge : adj[node]) {
 				int neighbor = edge[0];
 				long weight = edge[1];
@@ -95,12 +104,12 @@ public class Drumuri {
 		}
 	}
 
-	//
-	class MyScanner {
+	// Custom Scanner class
+	class MyScanner3 {
 		private BufferedReader br;
 		private StringTokenizer st;
 
-		public MyScanner(Reader reader) {
+		public MyScanner3(Reader reader) {
 			br = new BufferedReader(reader);
 		}
 

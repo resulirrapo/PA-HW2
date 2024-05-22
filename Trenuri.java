@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
 public class Trenuri {
 
 	public static void main(String[] args) throws IOException {
-		MyScanner input = new MyScanner(new FileReader("trenuri.in"));
+		MyScanner2 input = new MyScanner2(new FileReader("trenuri.in"));
 
 		String start = input.next();
 		final String end = input.next();
@@ -53,6 +53,7 @@ public class Trenuri {
 		output.close();
 	}
 
+	// Topological sort
 	static List<String> topologicalSort(Map<String, List<String>> graph) {
 		// calculate in-degree of each node
 		Map<String, Integer> inDegree = new HashMap<>();
@@ -88,11 +89,11 @@ public class Trenuri {
 }
 
 // Custom Scanner class
-class MyScanner {
+class MyScanner2 {
 	private BufferedReader br;
 	private StringTokenizer st;
 
-	public MyScanner(Reader reader) {
+	public MyScanner2(Reader reader) {
 		br = new BufferedReader(reader);
 	}
 

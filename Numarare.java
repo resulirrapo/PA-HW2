@@ -14,11 +14,11 @@ public class Numarare {
 	static final int MOD = 1000000007;
 
 	public static void main(String[] args) throws IOException {
-		MyScanner input = new MyScanner(new FileReader("numarare.in"));
+		MyScanner1 input = new MyScanner1(new FileReader("numarare.in"));
 
 		// Read input
 
-		// nunmber of nodes
+		// number of nodes
 		int N = input.nextInt();
 		// number of edges
 		int M = input.nextInt();
@@ -26,6 +26,7 @@ public class Numarare {
 		ArrayList<Integer>[] graph1 = new ArrayList[N + 1];
 		ArrayList<Integer>[] graph2 = new ArrayList[N + 1];
 
+		// Initialize adjacency list
 		for (int i = 0; i <= N; i++) {
 			graph1[i] = new ArrayList<>();
 			graph2[i] = new ArrayList<>();
@@ -102,11 +103,11 @@ public class Numarare {
 }
 
 // custom Scanner class
-class MyScanner {
+class MyScanner1 {
 	private BufferedReader br;
 	private StringTokenizer st;
 
-	public MyScanner(Reader reader) {
+	public MyScanner1(Reader reader) {
 		br = new BufferedReader(reader);
 	}
 
